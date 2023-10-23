@@ -1,0 +1,171 @@
+:root {
+    display: flex;
+    width: auto;
+    height: auto;
+    justify-content: center;
+    font-size: 1.3rem;
+    background-color: white;
+    
+}
+.imge {
+    box-sizing: content-box;
+    padding: 10px;
+    display: flex;
+    width: auto;
+    height: 600px;
+    /* background-image: url("paris.jpg"); */
+    background-repeat: no-repeat;
+    
+    border-radius: 10px;
+    margin: 0px;
+    
+    background-size: 100%;
+    
+}
+
+.border img {
+    height:auto;
+}
+.border {
+    border: 1px solid gray;
+    padding: 10px;
+    width: 1000px;
+    margin: 30px 0px;
+    align-items: center;
+    border-radius: 20px;
+    position: sticky;
+    min-height: 100px;
+}
+
+body {
+    display: block;
+    align-content: center;
+    background-color: rgb(255, 255, 255);
+    margin: 0px;
+    
+    border-radius: 20px;
+}
+
+.location {
+    display: flex;
+    position: absolute;
+    z-index: 2;
+    vertical-align: baseline;
+    left: 15px;
+    bottom: 15px;
+    color: white;
+    text-decoration: underline;
+    font-size: 50px;
+    font-weight: 800;
+    margin: 0;
+    user-select: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+footer div {
+    background-color: rgb(0, 27, 51);
+    color: white;
+}
+.description {
+    display: block;
+}
+.description p{
+    padding-left: 30px;
+}
+
+
+main > div {
+    margin:  30px 0px;
+}
+
+.nav {
+    padding-bottom: 0px;
+    
+}
+.col {
+    display: grid;
+    grid-template-columns: 500px 500px;
+    justify-content: space-between;
+    width: 1000px;
+    text-align: center;
+}
+.activity {
+    width: 400px;
+    justify-self: center;
+    padding: 10px; 
+    height: auto;
+    margin: 0px;  
+}
+.activity img {
+    width: 400px;
+    height: 300px;
+    
+    border-radius: 40px;
+    
+}
+.activities h2 {
+    text-align: center;
+    justify-content: center;
+}
+#about {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    margin: 0px;
+    width: 1000px;
+}
+.activity p {
+    padding: 5px;
+    word-wrap: break-word;
+    height: auto;
+}
+
+.logo img {
+    height: 60px;
+}
+.nav {
+    display: flex;
+    margin: 12px 0px;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    width: 1000px;
+}
+.logo {
+
+    padding: 8px 10px 8px 0px
+}
+.navitem {
+    text-align: right;
+    
+}
+.navbutton {
+    padding: 30px;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    
+} 
+.navbutton:hover{
+    color: rgb(74, 74, 255);
+}
+.sign_in {
+    background-color: rgb(74, 74, 255);
+    border-radius: 10px;
+    color: white;
+}
+.sign_in:hover {
+    background-color: rgb(0, 60, 100);
+}
+.info *, #reviews *{
+    padding: 10px;
+}
+.lo {
+    border-radius: 30px;
+}
