@@ -16,8 +16,6 @@ const countries =
         ]  
     },
     {
-
-    
         "name": "Salem",
         "backgroundImage": "images/salem-home.jpg",
         "description": "a city in Massachusetts",
@@ -29,7 +27,20 @@ const countries =
               "description": "Some description of things to do"
             }
         ]  
-    }  
+    },
+    {
+        "name": "DC",
+        "backgroundImage": "images/dc-whitehouse.jpg",
+        "description": "the U.S capital",
+        "activites": [
+            { "image": "images/dc-whitehouse.jpg",
+              "description": "Some description of things to do"
+            },
+            { "image": "images/dc-monument.jpg",
+              "description": "Some description of things to do"
+            }
+        ]  
+    }   
 ]
 
 function load(name){
