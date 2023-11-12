@@ -170,3 +170,18 @@ main > div {
 .lo {
     border-radius: 30px;
 }
+#f {
+    display:grid;
+    justify-items: end;
+    width: 900px;
+}
+#f textarea {
+    max-width: 900px;
+    min-width: 900px;
+    justify-self: left;
+    resize: none;
+}
+#f input {
+    width: 100px;
+}
+
