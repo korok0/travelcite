@@ -170,18 +170,27 @@ main > div {
 .lo {
     border-radius: 30px;
 }
-#f {
+#reviewForm {
     display:grid;
     justify-items: end;
-    width: 900px;
+    width: auto;
 }
-#f textarea {
-    max-width: 900px;
-    min-width: 900px;
+#reviewBox {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
     justify-self: left;
     resize: none;
+    height: 100px;
+    
 }
-#f input {
-    width: 100px;
+#reviewSubmit {
+    margin-top: 20px;
+    width: 120px;
+    height: 50px;
+    background-color: rgb(74, 74, 255);
+    color: white;
+    font-size: 20px;
+
 }
 
