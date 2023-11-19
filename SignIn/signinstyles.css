@@ -1,0 +1,65 @@
+:root {
+    height: 100%;
+    
+    
+}
+
+main {
+    display: block;
+    width: 500px;
+    margin-bottom: 50px;
+}
+.img-container {
+    display: flex;
+    justify-content: center;
+    margin: 3px;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: inherit;
+    padding: 0px;
+    margin: 0px;
+}
+.box {
+
+    height: 500px;
+    display: flex;
+    border: 1px black solid;
+    border-radius: 30px;
+    box-sizing: content-box;
+    overflow: auto;
+    justify-content: center;
+    
+}
+.hidden {
+    display: none;
+}
+input {
+    display: block;
+    padding: 10px;
+    min-width: 300px;
+    max-width: 300px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    
+}
+form div{
+    margin-top: 30px;
+}
+form {
+    
+    width: auto;
+    height: auto;
+    margin-top: 80px;
+}
+#login {
+    height: 50px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    background-color: rgb(133, 155, 252);
+}
+
+
