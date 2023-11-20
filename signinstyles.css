@@ -62,5 +62,14 @@ form {
     background-color: rgb(133, 155, 252);
     cursor: pointer;
 }
+#redirect a{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: rgb(18, 105, 236);
+}
 
+#redirect {
+    margin-top: 15px;
+}
 

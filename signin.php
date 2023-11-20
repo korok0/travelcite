@@ -28,6 +28,7 @@
             <div class="submit">
                 <input type="submit" id="login" form="signin" value="Login">
             </div>
+            <div id="redirect"><a href="signup.php">Don't have an account? Sign up.</a></div>
     <!-- Upon submitting, send to script that checks if account exists. If it does, redirect to index.php-->
 
 
@@ -35,12 +36,15 @@
     After user submits credentials, check if they exist in database. If it does, redirect to main page
     -->
     <?php 
-        $e = $_POST['cpass'];
-        $p = $_POST['pass'];
-        if ($e == $p){
-            echo "<p>HEYYYYYYYYYYYYYYY</p>";
-            }
-        
+        // just testing if post array works
+        if (isset($_POST['pass']) && isset($_POST['cpass'])){
+            
+                $e = $_POST['cpass'];
+                $p = $_POST['pass'];
+                if ($e == $p){
+                    echo "<p>HEYYYYYYYYYYYYYYY</p>";
+                }
+        }
         ?>
         </form>
 

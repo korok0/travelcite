@@ -35,8 +35,9 @@
             <div class="submit">
                 <input type="submit" id="login" form="signin" value="Login">
             </div>
-            
+            <div id="redirect"><a href="signin.php">Already have an account? Sign in.</a></div>
         </form>
+        
 
     </div>
     </main>
