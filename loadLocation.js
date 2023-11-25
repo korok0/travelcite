@@ -41,3 +41,23 @@ function load(name){
     }
 
 }
+
+
+function loadMultipleLocations(locations) {
+    const container = document.querySelector('.location-cards-container'); // Adjust the selector as needed
+
+    locations.forEach(location => {
+        const link = document.createElement('a');
+        link.href = `${location.name.toLowerCase()}.html`; // Assuming file names match the location names in lowercase
+
+
+        const card = document.createElement('div');
+        card.className = 'location-card';
+        card.innerHTML =  `
+        <div class="card-image" style="background-image: url('${location.backgroundImage}')"></div>
+        <h3 class = "locationlink">${location.name}</h3>
+    `;
+        link.appendChild(card);
+        container.appendChild(link);
+    });
+}

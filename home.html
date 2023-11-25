@@ -21,43 +21,48 @@
             </div>  
         
     
-        <div class="imge border">
-            <p class="location">Example</p>
-            
+        <div class="multi imge border"> 
+            <p class="choice">Choose your next stop!<P>
+            <p class="location-cards-container"></p>
+             <!-- Smaller location cards will be loaded here -->
         </div>
+
+        
+
         <div class="info border">
-            <div class="rating"><h2>Rating </h2><h3>?/10</h3>
-                <p></p>
-            </div>
-            <div class="description"><h2>Description</h2>
-                <p></p>
-            </div>
         </div>
         
-        <div class="activities border">
-            
-                <h2>Things To Do</h2>
-            <div class="col">
-                <!--Script loads this section-->
-            </div>
-        </div>
+        
         
         <div class="border" id="reviews">
-            <h2>Reviews</h2>
             <p></p>
-            <form id="f">
-                <textarea form="f" rows="5" class="reviewBox" placeholder="Leave a review!"></textarea>
-                
-                <input form="f" type="submit">
-            </form>
-            </div>
+        </div>
+
     </main>
     <footer>
         <div class="border" id="about">
             About
         </div>
     </footer>
-    <script>load("France")</script>
+    <script>
+        loadMultipleLocations([
+            {
+                name: "DC",
+                backgroundImage: "images/dc-whitehouse.jpg",
+                description: "the U.S capital"
+            },
+            {
+                name: "Salem",
+                backgroundImage: "images/salem-home.jpg",
+                description: "a city in Massachusetts"
+            },
+            {
+                name: "France",
+                backgroundImage: "images/france-paris.jpg",
+                description: "a country in Western Europe"
+            }
+        ]);
+    </script>
 </body>
 
 </html>
