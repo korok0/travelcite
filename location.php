@@ -43,21 +43,37 @@
         </div>
         
         <div class="border" id="reviews">
-            <h2>Reviews</h2>
-            <p></p>
-            <form id="f">
-                <textarea form="f" rows="5" class="reviewBox" placeholder="Leave a review!"></textarea>
+            <div><h2>Reviews</h2></div>
+            <div><p></p></div>
+            <div>
+            <form id="reviewForm" action="">
+                <textarea type="text" id="reviewBox" placeholder="Leave a review!"></textarea>
                 
-                <input form="f" type="submit">
+                <button id="reviewSubmit" type="submit">Submit</button>
             </form>
-            </div>
+        </div>
+                
     </main>
     <footer>
         <div class="border" id="about">
             About
         </div>
     </footer>
-    <script>load("DC")</script>
+    <!--Once php is added we will only need 1 html file to represent all the location pages. Work on THIS file for any changes!-->
+    <?php 
+    if(!isset($_GET['location'])){
+        /* 
+        if someone tries to do site.php?location=
+        without specifying a location then redirect them back to main page
+        */
+    }
+    else{
+        $location = $_GET['location'];
+        echo $location;
+        echo "<script>load('" . $location . "')</script>";
+    }
+    ?>
+    
 </body>
 
 </html>
