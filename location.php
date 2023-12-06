@@ -59,8 +59,27 @@
             About
         </div>
     </footer>
-    <!--Once php is added we will only need 1 html file to represent all the location pages. Work on THIS file for any changes!-->
-    <script>load("Salem")</script>
+    <?php 
+    if(!isset($_GET['location']) or $_GET['location'] == NULL){
+        /* 
+        if someone tries to do site.php? or site.php?location=
+        without specifying location then redirect them back to main page
+        */
+
+        /* 
+        Redirect user to main page. *Signin page for now
+        */
+        header("Location: signin.php");
+
+        // prevent any more of the script to run
+        exit();
+    }
+    else{
+        $location = $_GET['location'];
+        echo "<script>load('" . $location . "')</script>";
+    }
+    ?>
+    
 </body>
 
 </html>
