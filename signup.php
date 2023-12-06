@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account</title>
     <link rel="stylesheet" href="signinstyles.css">
-    <!--Not using routes so we set a default value and can change it for different page to be loaded-->
+    <script src="register.js"></script>
     <?php 
     
     
@@ -33,7 +33,7 @@
                 <input id="cpassword" type="text" name="cpass" autocomplete="off" required>
             </div>
             <div class="submit">
-                <input type="submit" id="login" form="signin" value="Login">
+                <input type="submit" id="register" form="signin" value="signup">
             </div>
             <div id="redirect"><a href="signin.php">Already have an account? Sign in.</a></div>
         </form>

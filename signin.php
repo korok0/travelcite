@@ -26,7 +26,7 @@
                 <input id="password" type="text" name="pass" autocomplete="off" required>
             </div>
             <div class="submit">
-                <input type="submit" id="login" form="signin" value="Login">
+                <input type="submit" id="login" form="signin" value="signin">
             </div>
             <div id="redirect"><a href="signup.php">Don't have an account? Sign up.</a></div>
     <!-- Upon submitting, send to script that checks if account exists. If it does, redirect to index.php-->
@@ -42,7 +42,7 @@
                 $e = $_POST['cpass'];
                 $p = $_POST['pass'];
                 if ($e == $p){
-                    echo "<p>HEYYYYYYYYYYYYYYY</p>";
+                    echo "<p>PASSWORDS MATCH!</p>";
                 }
         }
         ?>

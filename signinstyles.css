@@ -54,7 +54,7 @@ form {
     height: auto;
     margin-top: 80px;
 }
-#login {
+#login, #register{
     height: 50px;
     color: white;
     font-weight: bold;
