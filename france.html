@@ -43,43 +43,21 @@
         </div>
         
         <div class="border" id="reviews">
-            <div><h2>Reviews</h2></div>
-            <div><p></p></div>
-            <div>
-            <form id="reviewForm" action="">
-                <textarea type="text" id="reviewBox" placeholder="Leave a review!"></textarea>
+            <h2>Reviews</h2>
+            <p></p>
+            <form id="f">
+                <textarea form="f" rows="5" class="reviewBox" placeholder="Leave a review!"></textarea>
                 
-                <button id="reviewSubmit" type="submit">Submit</button>
+                <input form="f" type="submit">
             </form>
-        </div>
-                
+            </div>
     </main>
     <footer>
         <div class="border" id="about">
             About
         </div>
     </footer>
-    <?php 
-    if(!isset($_GET['location']) or $_GET['location'] == NULL){
-        /* 
-        if someone tries to do site.php? or site.php?location=
-        without specifying location then redirect them back to main page
-        */
-
-        /* 
-        Redirect user to main page. *Signin page for now
-        */
-        header("Location: signin.php");
-
-        // prevent any more of the script to run
-        exit();
-    }
-    else{
-        $location = $_GET['location'];
-        echo "<script>load('" . $location . "')</script>";
-    }
-    ?>
-    
+    <script>load("France")</script>
 </body>
 
 </html>
