@@ -32,6 +32,7 @@
                 <label for="cpassword" >Confirm Password:</label>
                 <input id="cpassword" type="text" name="cpass" autocomplete="off" required>
             </div>
+            <div id="formErrors"></div>
             <div class="submit">
                 <input type="submit" id="register" form="signin" value="signup">
             </div>
