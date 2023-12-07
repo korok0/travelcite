@@ -85,6 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="submit" id="login" value="signin">
                 </div>
                 <div id="redirect"><a href="signup.php">Don't have an account? Sign up.</a></div>
+                <div id="redirect"><a href="home.php">Don't want an account? Go to home!</a></div>
             </form>
         </div>
     </main>

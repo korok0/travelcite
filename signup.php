@@ -43,8 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute and check success
     if ($stmt->execute()) {
-        // Redirect to home.php after a successful registration
-        header("Location: home.php");
+        // Redirect to signin.php after a successful registration
+        header("Location: signin.php");
         exit();
     } else {
         echo "Error: " . $stmt->error;
@@ -90,6 +90,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="submit" id="register" form="signin" value="signup">
                 </div>
                 <div id="redirect"><a href="signin.php">Already have an account? Sign in.</a></div>
+                <div id="redirect"><a href="home.php">Don't want an account? Go to home!</a></div>
             </form>
         </div>
     </main>
