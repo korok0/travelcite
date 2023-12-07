@@ -1,4 +1,7 @@
 <?php
+// logout user if they head to sign up page while logged in
+session_start();
+$_SESSION = [];
 $servername = "localhost"; // Your server name
 $dbUsername = "root"; // Your database username, if you're using root
 $dbPassword = ""; // Your root password
@@ -59,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Registration</title>
     <link rel="stylesheet" href="signinstyles.css">
+    <script src="register.js"></script>
    
 </head>
 <body>

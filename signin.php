@@ -1,8 +1,9 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
+// logout user if they head to sign in page while logged in
 session_start();
+$_SESSION = [];
 // Database connection settings
 $servername = "localhost";
 $dbUsername = "root"; // Your database username

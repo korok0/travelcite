@@ -31,7 +31,16 @@
             }
             ?>
         <div class="multi imge border"> 
-            <p class="choice">Choose your next stop!<P>
+        <?php
+            $name = "Guest";
+            // if username is set
+            
+            if (isset($_SESSION["username"])){
+                $name = $_SESSION["username"];
+            }
+            echo "<p class=" . "choice" . ">Choose your next stop, $name!<P>";
+            ?>
+            
             <p class="location-cards-container"></p>
              <!-- Smaller location cards will be loaded here -->
         </div>
