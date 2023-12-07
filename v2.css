@@ -243,4 +243,6 @@ main > div {
     height: auto; /* Adjust height */
     margin-bottom: 10px; /* Control the space at the bottom */
 }
-
+#ratingMenu {
+    justify-self: left;
+}

@@ -37,6 +37,14 @@
         <div class="info border">
             <div class="rating"><h2>Rating </h2><h3>?/10</h3>
                 <p></p>
+                <select id="ratingMenu" name="rating">
+                    <option disabled selected>&star;</option>
+                    <option value="5">5&starf;</option>
+                    <option value="4">4&starf;</option>
+                    <option value="3">3&starf;</option>
+                    <option value="2">2&starf;</option>
+                    <option value="1">1&starf;</option>
+                </select>
             </div>
             <div class="description"><h2>Description</h2>
                 <p></p>
@@ -57,7 +65,6 @@
             <div>
             <form id="reviewForm" action="">
                 <textarea type="text" id="reviewBox" placeholder="Leave a review!"></textarea>
-                
                 <button id="reviewSubmit" type="submit">Submit</button>
             </form>
         </div>
