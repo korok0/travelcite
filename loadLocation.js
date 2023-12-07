@@ -1,17 +1,17 @@
 function load(name){
     // country object has attributes like description, images, etc
     // use the country object to build a location specific page
-    let country;
+    let location;
     console.log(locations)
     // build country page
-    for (const co of locations){
-        if (co.name.toLowerCase() == name.toLowerCase()){
-            country = co
+    for (const lo of locations){
+        if (lo.name.toLowerCase() == name.toLowerCase()){
+            location = lo
             console.log("1")
         }
     }
-    const countryName = document.querySelector(".location")
-    const countryDesc = document.querySelector(".description p")
+    const locationName = document.querySelector(".location")
+    const locationDesc = document.querySelector(".description p")
     const activityCol = document.querySelector(".col")
     const imge = document.querySelector(".imge")
     const description = document.querySelector(".description p")
@@ -19,16 +19,16 @@ function load(name){
     const reviewsDesc = document.querySelector("#reviews p")
     reviewsDesc.textContent = "This could contain a text area where user can leave a comment"
     ratingDesc.textContent = "This will contain an html input form so that user can leave a rating. Rating will be kept in a database and when a new review is entered, a simple calculation will be done to update the number."
-    description.textContent = country.description
+    description.textContent = location.description
 
     activityCol.innerHTML = ""
     imge.style.backgroundImage = "none"
-    imge.style.backgroundImage = `url("${country.backgroundImage}")`
-    countryName.textContent = country.name
-    countryDesc.textContent = country.description
+    imge.style.backgroundImage = `url("${location.backgroundImage}")`
+    locationName.textContent = location.name
+    locationDesc.textContent = location.description
 
     // Load the "Things To Do section"
-    for(const activity of country.activites){
+    for(const activity of location.activites){
         const activityElement = document.createElement("div")
         const img = document.createElement("img")
         const p = document.createElement("p")
@@ -43,7 +43,7 @@ function load(name){
 }
 
 
-function loadMultipleLocations(e) {
+function loadMultipleLocations() {
     const container = document.querySelector('.location-cards-container'); // Adjust the selector as needed
 
     locations.forEach(location => {
