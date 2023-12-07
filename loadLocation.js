@@ -2,10 +2,10 @@ function load(name){
     // country object has attributes like description, images, etc
     // use the country object to build a location specific page
     let country;
-    console.log(countries)
+    console.log(locations)
     // build country page
-    for (const co of countries){
-        if (co.name == name){
+    for (const co of locations){
+        if (co.name.toLowerCase() == name.toLowerCase()){
             country = co
             console.log("1")
         }
@@ -43,7 +43,7 @@ function load(name){
 }
 
 
-function loadMultipleLocations(locations) {
+function loadMultipleLocations(e) {
     const container = document.querySelector('.location-cards-container'); // Adjust the selector as needed
 
     locations.forEach(location => {

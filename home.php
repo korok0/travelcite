@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="v2.css">
     <title>Travel Cite</title>
     <script src="loadLocation.js"></script>
-    <script src="countries.json"></script>
+    <script src="locationData.json"></script>
 </head>
 
 <body>
     <main>
         
           <div class="nav">
-            <a class ="logo" href="index.php"><img src="images/travelsitelogo.png"></a>
+            <a class ="logo" href="home.php"><img src="images/travelsitelogo.png"></a>
             <div class="navitem"><a class="navbutton" href="home.php">Home</a></div>
             <div class="navitem"><a class="navbutton" href="#about">About</a></div>
             <div class="navitem"><a class="navbutton sign_in" href="signin.php">Sign in?</a></div>
@@ -45,23 +45,7 @@
         </div>
     </footer>
     <script>
-        loadMultipleLocations([
-            {
-                name: "DC",
-                backgroundImage: "images/dc-whitehouse.jpg",
-                description: "the U.S capital"
-            },
-            {
-                name: "Salem",
-                backgroundImage: "images/salem-home.jpg",
-                description: "a city in Massachusetts"
-            },
-            {
-                name: "France",
-                backgroundImage: "images/france-paris.jpg",
-                description: "a country in Western Europe"
-            }
-        ]);
+        loadMultipleLocations();
     </script>
 </body>
 
