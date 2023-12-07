@@ -19,7 +19,7 @@
             <img src="images/travelsitelogo.png">
         </div>
         <div class="box">
-        <form id="signin" action="signin.php" method="post">
+        <form id="signin" action="account.php" method="post">
             <div>
                 <label for="username">Username:</label>
                 <input id="username" type="text" name="user" autocomplete="off" required>
@@ -35,7 +35,7 @@
             </div>
             <div id="formErrors"></div>
             <div class="submit">
-                <input type="submit" id="register" form="signin" value="signup">
+                <input type="submit" id="register" form="signin" name="type" value="signup">
             </div>
             <div id="redirect"><a href="signin.php">Already have an account? Sign in.</a></div>
         </form>

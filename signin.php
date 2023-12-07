@@ -15,7 +15,7 @@
             <img src="images/travelsitelogo.png">
         </div>
         <div class="box">
-        <form id="signin" action="index.php" method="post">
+        <form id="signin" action="account.php" method="post">
             <div>
                 <label for="username">Username:</label>
                 <input id="username" type="text" name="user" autocomplete="off" required>
@@ -26,7 +26,7 @@
                 <input id="password" type="text" name="pass" autocomplete="off" required>
             </div>
             <div class="submit">
-                <input type="submit" id="login" form="signin" value="signin">
+                <input type="submit" id="login" form="signin" name="type" value="signin">
             </div>
             <div id="redirect"><a href="signup.php">Don't have an account? Sign up.</a></div>
     <!-- Upon submitting, send to script that checks if account exists. If it does, redirect to index.php-->
