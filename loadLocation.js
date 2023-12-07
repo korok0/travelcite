@@ -48,7 +48,7 @@ function loadMultipleLocations(locations) {
 
     locations.forEach(location => {
         const link = document.createElement('a');
-        link.href = `${location.name.toLowerCase()}.html`; // Assuming file names match the location names in lowercase
+        link.href = `location.php?location=${location.name.toLowerCase()}`; // Assuming file names match the location names in lowercase
 
 
         const card = document.createElement('div');
