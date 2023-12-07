@@ -29,9 +29,6 @@
                 // change sign in button to log out!
                 echo "<script>changeLogButton()</script>";
             }
-            else{
-                echo "Sign in";
-            }
             ?>
         <div class="multi imge border"> 
             <p class="choice">Choose your next stop!<P>

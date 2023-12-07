@@ -38,7 +38,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Passwords match! Log the user in and redirect to home.php
                 $_SESSION['user_id'] = $row['account_ID']; // or any other user info you want to store in the session
                 $_SESSION['username'] = $username;
-                // random value for now. what matters is setting it in the array
+                
+                // tell session that user is logged in. random value for now. what matters is setting it in the array
                 $_SESSION['logged_in'] = "1";
                 header("Location: home.php");
                 exit();

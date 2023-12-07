@@ -8,6 +8,7 @@
     <title>Travel Cite</title>
     <script src="loadLocation.js"></script>
     <script src="locationData.json"></script>
+    <script src="loginButton.js"></script>
 </head>
 
 <body>
@@ -17,10 +18,18 @@
             <a class ="logo" href="home.php"><img src="images/travelsitelogo.png"></a>
             <div class="navitem"><a class="navbutton" href="home.php">Home</a></div>
             <div class="navitem"><a class="navbutton" href="#about">About</a></div>
-            <div class="navitem"><a class="navbutton sign_in" href="">Sign in?</a></div>
+            <div class="navitem"><a class="navbutton sign_in" href="">Sign in</a></div>
             </div>  
         
-    
+            <?php
+            // resume the session when switching pages
+            session_start();
+            // if user is logged in 
+            if (isset($_SESSION["logged_in"])){
+                // change sign in button to log out!
+                echo "<script>changeLogButton()</script>";
+            }
+            ?>
         <div class="imge border">
             <p class="location">Example</p>
             
