@@ -14,10 +14,10 @@
     <main>
         
           <div class="nav">
-            <a class ="logo" href="index.html"><img src="images/travelsitelogo.png"></a>
-            <div class="navitem"><a class="navbutton" href="home.html">Home</a></div>
+            <a class ="logo" href="index.php"><img src="images/travelsitelogo.png"></a>
+            <div class="navitem"><a class="navbutton" href="home.php">Home</a></div>
             <div class="navitem"><a class="navbutton" href="#about">About</a></div>
-            <div class="navitem"><a class="navbutton sign_in" href="">Sign in?</a></div>
+            <div class="navitem"><a class="navbutton sign_in" href="signin.php">Sign in?</a></div>
             </div>  
         
     
