@@ -24,14 +24,14 @@ body{
 }
 .box {
 
-    height: 500px;
     display: flex;
     border: 1px black solid;
     border-radius: 30px;
     box-sizing: content-box;
-    overflow: auto;
+    overflow: hidden;
     justify-content: center;
-    
+    padding: 10px;
+    padding-bottom: 40px;
 }
 .hidden {
     display: none;
