@@ -8,7 +8,7 @@
     <title>Travel Cite</title>
     <script src="loadLocation.js"></script>
     <script src="locationData.json"></script>
-    <script src="loginButton.js"></script>
+    <script src="buttons.js"></script>
 </head>
 
 <body>

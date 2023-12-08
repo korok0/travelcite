@@ -17,7 +17,7 @@ function load(name){
     const description = document.querySelector(".description p")
     const ratingDesc = document.querySelector(".rating p")
     const reviewsDesc = document.querySelector("#reviews p")
-    reviewsDesc.textContent = "Liked your visit? Didn't like it? Share your experiences to the world!"
+    reviewsDesc.textContent = "Liked your visit? Didn't like it? Login to share your experiences to the world!"
     ratingDesc.textContent = "This will contain an html input form so that user can leave a rating. Rating will be kept in a database and when a new review is entered, a simple calculation will be done to update the number."
     description.textContent = location.description
 

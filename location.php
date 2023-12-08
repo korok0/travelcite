@@ -8,7 +8,7 @@
     <title>Travel Cite</title>
     <script src="loadLocation.js"></script>
     <script src="locationData.json"></script>
-    <script src="loginButton.js"></script>
+    <script src="buttons.js"></script>
 </head>
 
 <body>
@@ -21,15 +21,6 @@
             <div class="navitem"><a class="navbutton sign_in" href="signin.php">Sign in</a></div>
             </div>  
         
-            <?php
-            // resume the session when switching pages
-            session_start();
-            // if user is logged in 
-            if (isset($_SESSION["logged_in"])){
-                // change sign in button to log out!
-                echo "<script>changeLogButton()</script>";
-            }
-            ?>
         <div class="imge border">
             <p class="location">Example</p>
             
@@ -95,6 +86,18 @@
         echo "<script>load('" . $location . "')</script>";
     }
     ?>
+    <?php
+            // resume the session when switching pages
+            session_start();
+            // if user is logged in 
+            if (isset($_SESSION["logged_in"])){
+                // change sign in button to log out!
+                echo "<script>changeLogButton()</script>";
+            }
+            else {
+                echo "<script>lockReview()</script>";
+            }
+            ?>
     
 </body>
 
