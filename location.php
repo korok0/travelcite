@@ -28,14 +28,6 @@
         <div class="info border">
             <div class="rating"><h2>Rating </h2><h3>?/10</h3>
                 <p></p>
-                <select id="ratingMenu" name="rating">
-                    <option disabled selected>&star;</option>
-                    <option value="5">5&starf;</option>
-                    <option value="4">4&starf;</option>
-                    <option value="3">3&starf;</option>
-                    <option value="2">2&starf;</option>
-                    <option value="1">1&starf;</option>
-                </select>
             </div>
             <div class="description"><h2>Description</h2>
                 <p></p>
@@ -54,8 +46,16 @@
             <div><h2>Reviews</h2></div>
             <div><p></p></div>
             <div>
-            <form id="reviewForm" action="">
-                <textarea type="text" id="reviewBox" placeholder="Leave a review!"></textarea>
+            <form id="reviewForm" action="submitReview.php" method="get">
+                <textarea type="text" id="reviewBox" placeholder="Leave a review!" name="review"></textarea>
+                <select id="ratingMenu" name="rating" required>
+                    <option disabled selected value="">&star;</option>
+                    <option value="5">5&starf;</option>
+                    <option value="4">4&starf;</option>
+                    <option value="3">3&starf;</option>
+                    <option value="2">2&starf;</option>
+                    <option value="1">1&starf;</option>
+                </select>
                 <button id="reviewSubmit" type="submit">Submit</button>
             </form>
         </div>
@@ -95,6 +95,7 @@
                 echo "<script>changeLogButton()</script>";
             }
             else {
+                // if user is not logged in, lock ratings and review buttons
                 echo "<script>lockReview()</script>";
             }
             ?>
