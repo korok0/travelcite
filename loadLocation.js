@@ -68,3 +68,28 @@ function displayUsername(username){
     reviewsDesc.textContent = reviewDialogue
     
 }
+function loadReviews(username, rating, review){
+    console.log(typeof username)
+    console.log(username)
+    const userReviewBox = document.getElementById("reviews")
+    const userNameBox = document.createElement("div")
+    userNameBox.innerHTML = 
+    `
+    <div>
+    <p>User:<br> ${username}</p>
+    <p>Rating:<br> ${rating}</p>
+    </div>
+    <div class='reviewMessage'><p>${review}</p></div>
+    
+    `
+    userReviewBox.appendChild(userNameBox)
+    userNameBox.className = "userReview"
+    
+}
+function displayAverageRating(ratingTotal, count){
+    ratingAverage = ratingTotal / count
+    if(!isNaN(ratingAverage)){
+        locationRating = document.querySelector(".rating h3")
+        locationRating.textContent = `${ratingAverage.toFixed(1)}`
+    }
+}

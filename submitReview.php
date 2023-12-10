@@ -29,7 +29,7 @@ if ($conn->query($sql) === TRUE) {
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
-
+$conn->close();
 // Redirect back to the location page
-header("Location: location.php?location=" . urlencode($location));
+header("Location: location.php?location=" . urlencode($location). "#reviews");
 ?>

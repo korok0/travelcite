@@ -1,6 +1,5 @@
 <?php
 session_start(); // Start the session
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -30,9 +29,9 @@ $sql = "CREATE TABLE IF NOT EXISTS $tableName (
 )";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Table $tableName created successfully";
+    //echo "Table $tableName created successfully";
 } else {
-    echo "Error creating table: " . $conn->error;
+    //echo "Error creating table: " . $conn->error;
 }
 
 // Validate $location
@@ -73,8 +72,7 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
         <div class="border">
         <div class="rating">
             <h2>Rating </h2>
-            <h3>/10</h3>
-            <p></p>
+            <h3>?/10</h3>
         </div>
             <div class="description"><h2>Description</h2>
                 <p></p>
@@ -112,16 +110,7 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
                 <button id="reviewSubmit" type="submit">Submit</button>
             </form>
         </div>
-        <div class="userReview">
-            <div>
-                <p></p>
-                <p></p>
-            </div>
-            <div class="reviewMessage"><p></p></div>
-        </div>
-        </div>
-        
-                
+          
     </main>
     <footer>
         <div class="border" id="about">
@@ -129,19 +118,16 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
         </div>
     </footer>
     <?php 
-$userName = "Guest";
-if(isset($_SESSION['user'])) {
-    echo "Username: " . $_SESSION['user'];
-    $userName = $_SESSION['user'];
-} else {
-    echo "Username: $userName";
-}
+    $userName = "Guest";
+    if(isset($_SESSION['user'])) {
+        $userName = $_SESSION['user'];
+    }
 
-if(isset($_SESSION['logged_in'])) {
-    // echo "Logged In: " . $_SESSION['logged_in'];
-} else {
-    // echo "Logged In: No";
-}
+    if(isset($_SESSION['logged_in'])) {
+        // echo "Logged In: " . $_SESSION['logged_in'];
+    } else {
+        // echo "Logged In: No";
+    }
     if(!isset($_GET['location']) or $_GET['location'] == NULL){
         /* 
         if someone tries to do site.php? or site.php?location=
@@ -155,20 +141,54 @@ if(isset($_SESSION['logged_in'])) {
 
         // Prevent any more of the script to run
         exit();
+        }
+        else{
+            $location = $_GET['location'];
+            echo "<script>load('" . $location . "')</script>";
+            echo "<script>displayUsername('" . $userName ."')</script>";
+        }
+        if (isset($_SESSION["logged_in"])){
+            echo "<script>changeLogButton()</script>";
+        }
+        else {
+            echo "<script>lockReview()</script>";
+        }?>
+    
+    <?php
+    $servername = "localhost";
+    $dbUsername = "root"; 
+    $dbPassword = "";
+    $dbName = "travelcite_user_account";
+
+    // Create connection
+    $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbName);
+
+    // Check for connection errors
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } 
+    if(isset($_GET["location"])){
+        $sql = "SELECT * from {$_GET['location']}_reviews";
+        $res = mysqli_query($conn, $sql);
+        if($res){
+            // add up ratings and number of ratings to perform calculation of average
+            $ratingTotal = 0;
+            $count = 0;
+            while($array = mysqli_fetch_array($res)){
+                $username = $array["username"];
+                $rating = $array["rating"];
+                $review = $conn->real_escape_string($array["review"]);
+                echo "<script>loadReviews('$username', $rating,'$review')</script>";
+                $count+=1;
+                $ratingTotal+=$rating;
+            }
+            // call js function to perform average calculation
+            echo "<script>displayAverageRating($ratingTotal, $count)</script>";
+        }
+        
     }
-    else{
-        $location = $_GET['location'];
-        echo "<script>load('" . $location . "')</script>";
-        echo "<script>displayUsername('" . $userName ."')</script>";
-    }
-    if (isset($_SESSION["logged_in"])){
-        echo "<script>changeLogButton()</script>";
-    }
-    else {
-        echo "<script>lockReview()</script>";
-    }
+    $conn->close();
     ?>
-   
     
 </body>
 

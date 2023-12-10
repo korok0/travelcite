@@ -255,7 +255,6 @@ main > div {
     margin: 20px 20px 20px 20px;
 }
 .reviewMessage{
-    border: 1px solid red;
     word-wrap: break-word;
     padding: 1px;
     overflow: hidden;
@@ -266,5 +265,6 @@ main > div {
 .userReview p {
     min-width: 70px;
     text-align: center;
-    border: 1px solid red;
+    margin: 0px;
+    padding: 0px;
 }
