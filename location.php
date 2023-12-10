@@ -31,14 +31,14 @@ $sql = "CREATE TABLE IF NOT EXISTS $tableName (
 )";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Table $tableName created successfully";
+    //echo "Table $tableName created successfully";
 } else {
-    echo "Error creating table: " . $conn->error;
+    //echo "Error creating table: " . $conn->error;
 }
 
 // Validate $location
 if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
-    echo "Invalid location name!";
+    //echo "Invalid location name!";
     exit;
 }
 
@@ -71,27 +71,29 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
             <p class="location">Example</p>
             
         </div>
+        <div class="border">
         <div class="rating">
-    <h2>Rating </h2>
-    <select id="ratingMenu" name="rating" required>
-        <option disabled selected value="">&star;</option>
-        <option value="10">10&starf;</option>
-        <option value="9">9&starf;</option>
-        <option value="8">8&starf;</option>
-        <option value="7">7&starf;</option>
-        <option value="6">6&starf;</option>
-        <option value="5">5&starf;</option>
-        <option value="4">4&starf;</option>
-        <option value="3">3&starf;</option>
-        <option value="2">2&starf;</option>
-        <option value="1">1&starf;</option>
-    </select>
-    <h3>/10</h3>
-    <p></p>
-</div>
+            <h2>Rating </h2>
+            <select id="ratingMenu" name="rating" required>
+                <option disabled selected value="">&star;</option>
+                <option value="10">10&starf;</option>
+                <option value="9">9&starf;</option>
+                <option value="8">8&starf;</option>
+                <option value="7">7&starf;</option>
+                <option value="6">6&starf;</option>
+                <option value="5">5&starf;</option>
+                <option value="4">4&starf;</option>
+                <option value="3">3&starf;</option>
+                <option value="2">2&starf;</option>
+                <option value="1">1&starf;</option>
+            </select>
+            <h3>/10</h3>
+            <p></p>
+        </div>
             <div class="description"><h2>Description</h2>
                 <p></p>
             </div>
+        </div>
         </div>
         
         <div class="activities border">

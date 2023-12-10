@@ -72,12 +72,11 @@ footer div {
     padding: 5px 0; /* Minimal padding - adjust as needed */
     font-size: 1.5rem;
 }
-.description {
+.description, .rating {
     display: block;
+    padding-left: 20px;
 }
-.description p{
-    padding-left: 30px;
-}
+
 
 
 main > div {
