@@ -10,6 +10,7 @@ function load(name){
             console.log("1")
         }
     }
+    const locationLinks = document.querySelector(".locationLinks")
     const locationName = document.querySelector(".location")
     const locationDesc = document.querySelector(".description p")
     const activityCol = document.querySelector(".col")
@@ -92,4 +93,22 @@ function displayAverageRating(ratingTotal, count){
         locationRating = document.querySelector(".rating h3")
         locationRating.textContent = `${ratingAverage.toFixed(1)}`
     }
+}
+function loadSources(name) {
+    let source;
+    for (const s of sources){
+        // set find source object that matches the location
+        if (s.location.toLowerCase() == name.toLowerCase()){
+            source = s
+        }
+    }
+    // search through different places in the links array
+    for(const place of source.links){
+        const a = document.createElement("a")
+        a.href = place.link
+        a.target = "_blank"
+        a.textContent = place.name
+        document.querySelector(".locationLinks").append(a)
+    }
+
 }

@@ -53,6 +53,7 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
     <script src="loadLocation.js"></script>
     <script src="locationData.json"></script>
     <script src="buttons.js"></script>
+    <script src="sourceData.json"></script>
 </head>
 
 <body>
@@ -114,7 +115,15 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
     </main>
     <footer>
         <div class="border" id="about">
-            About
+            <div>
+                <h3>References</h3>
+            </div>
+            <div class="locationLinks">
+                <h3>Location Links</h3>
+            </div>
+            <div>
+                <h3>Other</h3>
+            </div>
         </div>
     </footer>
     <?php 
@@ -145,6 +154,7 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
         else{
             $location = $_GET['location'];
             echo "<script>load('" . $location . "')</script>";
+            echo "<script>loadSources('" . $location . "')</script>";
             echo "<script>displayUsername('" . $userName ."')</script>";
         }
         if (isset($_SESSION["logged_in"])){

@@ -115,11 +115,30 @@ main > div {
 #about {
     display: flex;
     text-align: center;
-    align-items: center;
+    align-items:flex-start;
     justify-content: center;
     border-radius: 4px;
     margin: 0px;
     width: 1000px;
+    padding-top: 30px;
+    
+}
+#about div{
+    margin: 20px 60px 20px 60px;
+    width: auto;
+    padding: 10px;
+    max-width: 200px;
+    
+}
+#about a{
+    display: block;
+    color: white;
+    margin-top: 40px;
+    text-decoration: none;
+
+}
+#about h3 {
+    margin: 0px;
 }
 .activity p {
     padding: 5px;

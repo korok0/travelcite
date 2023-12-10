@@ -6,12 +6,14 @@ const locations = [{
     "description": "Paris is a city in France. Paris has been one of the world's major centres of finance, diplomacy, commerce, culture, fashion, and gastronomy. For its leading role in the arts and sciences, as well as its early and extensive system of street lighting, in the 19th century, it became known as the City of Light.",
     "activites": [
         { "image": "images/louvre.jpg",
-          "description": "The Louvre is a national art museum in Paris, France. The Musée du Louvre contains more than 380,000 objects and displays 35,000 works of art."
+          "description": "The Louvre is a national art museum in Paris, France. The Musée du Louvre contains more than 380,000 objects and displays 35,000 works of art.",
+          "link": " "
         },
         { "image": "images/eiffel.jpg",
-          "description": "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889."
+          "description": "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889.",
+          "link": " "
         }
-    ]  
+    ] 
 },
 {
     "name": "Salem",
@@ -21,14 +23,17 @@ const locations = [{
     "activites": [
         { "image": "images/salem-seven-gables.jpg",
           "description": "The House of the Seven Gables is a 1668 colonial mansion in Salem, named for its gables." +
-          "The house is a non-profit museum, with an admission fee charged for tours."
+          "The house is a non-profit museum, with an admission fee charged for tours.",
+          "link": " "
         },
         { "image": "images/salem-witch-museum.jpg",
           "description": "The Jonathan Corwin House, known locally as The Witch House, is a history "+
           "house museum in Salem. It was the home of Judge Jonathan Corwin, and is the only structure still standing "+
-          "in Salem with direect ties to the Salem witch trials of 1692."
+          "in Salem with direect ties to the Salem witch trials of 1692.",
+          "link": " "
         }
-    ]  
+    ] 
+
 },
 {
     "name": "DC",
@@ -40,13 +45,71 @@ const locations = [{
         { "image": "images/dc-smithsonian.jpg",
           "description": "The National Museum of Natural History is a natural history museum administered by the Smithsonian "+
           "Institution, located on the National Mall in Washington, D.C., "+
-          "United States. It has free admission and is open 364 days a year. In 2022, with 3.9 million visitors, it was the most-visited museum in the United States."
+          "United States. It has free admission and is open 364 days a year. In 2022, with 3.9 million visitors, it was the most-visited museum in the United States.",
+          "link": " "
         },
         { "image": "images/dc-monument.jpg",
           "description": "The Washington Monument is an obelisk on the National Mall in Washington, D.C.,"+
           " built to commemorate George Washington, a Founding Father of the United States, victorious "+
-          "commander-in-chief of the Continental Army from 1775 to 1783 in the American Revolutionary War, and the first President of the United States from 1789 to 1797."
+          "commander-in-chief of the Continental Army from 1775 to 1783 in the American Revolutionary War, and the first President of the United States from 1789 to 1797.",
+          "link": " "
         }
-    ]  
-}   
+    ] 
+  
+}   ,
+
+]
+const sources = [{
+
+  "location": "paris",
+  "links":[
+    {
+      "name": "Paris",
+      "link": "https://en.wikipedia.org/wiki/Paris"
+    },
+  {
+    "name": "Eiffel Tower",
+    "link": "https://en.wikipedia.org/wiki/Eiffel_Tower"
+  },
+  {
+    "name": "Louvre",
+    "link": "https://en.wikipedia.org/wiki/Louvre"
+  }]
+},{
+"location": "dc",
+"links":[
+  
+
+  {
+    "name": "Washington, DC",
+    "link": "https://en.wikipedia.org/wiki/Washington,_D.C."
+  },
+  {
+    "name": "Washington Monument",
+    "link": "https://en.wikipedia.org/wiki/Washington_Monument"
+  },
+  {
+    "name": "Smithsonian Museum",
+    "link": "https://en.wikipedia.org/wiki/National_Museum_of_Natural_History"
+  }
+]},{
+"location": "salem",
+  "links":[
+  
+  {
+    "name": "Salem",
+    "link": "https://en.wikipedia.org/wiki/Salem,_Massachusetts"
+  },
+  {
+    "name": "Witch House",
+    "link": "https://en.wikipedia.org/wiki/The_Witch_House"
+  },
+  {
+    "name": "Seven Gables",
+    "link": "https://en.wikipedia.org/wiki/House_of_the_Seven_Gables"
+  }
+  
+  ]
+}
+
 ]
