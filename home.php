@@ -54,16 +54,6 @@
              <!-- Smaller location cards will be loaded here -->
         </div>
 
-        
-
-        <div class="info border">
-        </div>
-        
-        
-        
-        <div class="border" id="reviews">
-            <p></p>
-        </div>
 
     </main>
     <footer>

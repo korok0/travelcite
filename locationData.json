@@ -1,41 +1,51 @@
 const locations = [{
 
     
-    "name": "France",
-    "backgroundImage": "images/france-paris.jpg",
-    "description": "a country in Western Europe",
+    "name": "Paris",
+    "backgroundImage": "images/paris-main.jpg",
+    "description": "Paris is a city in France. Paris has been one of the world's major centres of finance, diplomacy, commerce, culture, fashion, and gastronomy. For its leading role in the arts and sciences, as well as its early and extensive system of street lighting, in the 19th century, it became known as the City of Light.",
     "activites": [
-        { "image": "images/france-paris.jpg",
-          "description": "Some description of things to do"
+        { "image": "images/louvre.jpg",
+          "description": "The Louvre is a national art museum in Paris, France. The Musée du Louvre contains more than 380,000 objects and displays 35,000 works of art."
         },
-        { "image": "images/france-country.jpg",
-          "description": "Some description of things to do"
+        { "image": "images/eiffel.jpg",
+          "description": "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It is named after the engineer Gustave Eiffel, whose company designed and built the tower from 1887 to 1889."
         }
     ]  
 },
 {
     "name": "Salem",
     "backgroundImage": "images/salem-home.jpg",
-    "description": "a city in Massachusetts",
+    "description": "Salem is a historic coastal city in Essex County, Massachusetts, located on the North Shore of Greater Boston. Salem is a residential "+
+    "and tourist area. Salem is widely noted for the infamous Salem witch trials of 1692.",
     "activites": [
-        { "image": "images/salem-statue.jpg",
-          "description": "Some description of things to do"
+        { "image": "images/salem-seven-gables.jpg",
+          "description": "The House of the Seven Gables is a 1668 colonial mansion in Salem, named for its gables." +
+          "The house is a non-profit museum, with an admission fee charged for tours."
         },
-        { "image": "images/salem-home.jpg",
-          "description": "Some description of things to do"
+        { "image": "images/salem-witch-museum.jpg",
+          "description": "The Jonathan Corwin House, known locally as The Witch House, is a history "+
+          "house museum in Salem. It was the home of Judge Jonathan Corwin, and is the only structure still standing "+
+          "in Salem with direect ties to the Salem witch trials of 1692."
         }
     ]  
 },
 {
     "name": "DC",
     "backgroundImage": "images/dc-whitehouse.jpg",
-    "description": "the U.S capital",
+    "description": "Washington, D.C., formally the District of Columbia and commonly called Washington or D.C., is the capital city and the federal "+
+    "district of the United States. Washington, D.C. was named for George Washington, a Founding Father, victorious commanding general of the Continental Army in the"+
+    " American Revolutionary War and the first president of the United States, who is widely considered the \"Father of his country\"",
     "activites": [
-        { "image": "images/dc-whitehouse.jpg",
-          "description": "Some description of things to do"
+        { "image": "images/dc-smithsonian.jpg",
+          "description": "The National Museum of Natural History is a natural history museum administered by the Smithsonian "+
+          "Institution, located on the National Mall in Washington, D.C., "+
+          "United States. It has free admission and is open 364 days a year. In 2022, with 3.9 million visitors, it was the most-visited museum in the United States."
         },
         { "image": "images/dc-monument.jpg",
-          "description": "Some description of things to do"
+          "description": "The Washington Monument is an obelisk on the National Mall in Washington, D.C.,"+
+          " built to commemorate George Washington, a Founding Father of the United States, victorious "+
+          "commander-in-chief of the Continental Army from 1775 to 1783 in the American Revolutionary War, and the first President of the United States from 1789 to 1797."
         }
     ]  
 }   
