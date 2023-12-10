@@ -36,17 +36,17 @@
             
             
             if (isset($_SESSION['user'])) {
-                echo "Username: " . $_SESSION['user'];
+                //echo "Username: " . $_SESSION['user'];
                 $name = $_SESSION['user'];
             } else {
-                echo "Username: Guest";
+                //echo "Username: Guest";
             }
             
             // Check if the 'logged_in' session variable is set before accessing it
             if (isset($_SESSION['logged_in'])) {
-                echo "Logged In: " . $_SESSION['logged_in'];
+                //echo "Logged In: " . $_SESSION['logged_in'];
             } else {
-                echo "Logged In: No";
+                //echo "Logged In: No";
             }
             echo "<p class=" . "choice" . ">Choose your next stop, $name!<P>";
             ?>
@@ -59,7 +59,17 @@
     </main>
     <footer>
         <div class="border" id="about">
-            About
+        <div>
+                <h3>Main References</h3>
+                <a href="https://www.w3schools.com/html/" target="_blank">HTML</a>
+                <a href="https://www.w3schools.com/js/" target="_blank">PHP</a>
+                <a href="https://www.w3schools.com/html/" target="_blank">JS</a>
+                <a href="https://www.w3schools.com/css/" target="_blank">CSS</a>
+        </div>
+            <div>
+                <h3>Other</h3>
+                <a href="https://github.com/korok0/travelcite" target="_blank">GitHub Repository</a>
+            </div>
         </div>
     </footer>
     <script>

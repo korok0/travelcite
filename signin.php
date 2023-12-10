@@ -48,16 +48,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user'] = $username;
             $_SESSION['logged_in'] = "1";
 
-            // Redirect based on the last visited page
-            if (isset($_SESSION['last_page'])) {
-                $lastPage = $_SESSION['last_page'];
-                unset($_SESSION['last_page']);
-                header("Location: $lastPage");
-                exit();
-            } else {
-                header("Location: home.php");
-                exit();
-            }
+            
+            header("Location: home.php");
+            exit();
+            
         } else {
             // Handle incorrect password
         }
@@ -69,8 +63,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 
-// Store the current page in the session
-$_SESSION['last_page'] = $_SERVER['HTTP_REFERER'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -39,7 +39,6 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
     //echo "Invalid location name!";
     exit;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -116,13 +115,18 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
     <footer>
         <div class="border" id="about">
             <div>
-                <h3>References</h3>
+                <h3>Main References</h3>
+                <a href="https://www.w3schools.com/html/" target="_blank">HTML</a>
+                <a href="https://www.w3schools.com/js/" target="_blank">PHP</a>
+                <a href="https://www.w3schools.com/html/" target="_blank">JS</a>
+                <a href="https://www.w3schools.com/css/" target="_blank">CSS</a>
             </div>
             <div class="locationLinks">
                 <h3>Location Links</h3>
             </div>
             <div>
                 <h3>Other</h3>
+                <a href="https://github.com/korok0/travelcite" target="_blank">GitHub Repository</a>
             </div>
         </div>
     </footer>

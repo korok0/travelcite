@@ -88,10 +88,15 @@ function loadReviews(username, rating, review){
     
 }
 function displayAverageRating(ratingTotal, count){
-    ratingAverage = ratingTotal / count
+    let ratingAverage = ratingTotal / count
     if(!isNaN(ratingAverage)){
         locationRating = document.querySelector(".rating h3")
-        locationRating.textContent = `${ratingAverage.toFixed(1)}`
+        let rating = ratingAverage.toFixed(1)
+        // convert to int if decimal is 0
+        if (rating % 1 == 0){
+            rating = parseInt(rating)
+        }
+        locationRating.textContent = `${rating}/10`
     }
 }
 function loadSources(name) {
