@@ -15,9 +15,6 @@ function load(name){
     const activityCol = document.querySelector(".col")
     const imge = document.querySelector(".imge")
     const description = document.querySelector(".description p")
-    const ratingDesc = document.querySelector(".rating p")
-    const reviewsDesc = document.querySelector("#reviews p")
-    reviewsDesc.textContent = "Liked your visit? Didn't like it? Login to share your experiences to the world!"
     description.textContent = location.description
     activityCol.innerHTML = ""
     imge.style.backgroundImage = "none"
@@ -58,4 +55,16 @@ function loadMultipleLocations() {
         link.appendChild(card);
         container.appendChild(link);
     });
+}
+function displayUsername(username){
+    let reviewDialogue = "Liked your visit? Didn't like it? "
+    if(username.toLowerCase() == "guest"){
+        reviewDialogue += "Login to share your experiences to the world!"
+    }
+    else{
+        reviewDialogue += `Tell everyone about your experience, ${username}!`
+    }
+    const reviewsDesc = document.querySelector("#reviews p")
+    reviewsDesc.textContent = reviewDialogue
+    
 }

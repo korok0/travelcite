@@ -120,11 +120,12 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
         </div>
     </footer>
     <?php 
-
+$userName = "Guest";
 if(isset($_SESSION['user'])) {
     echo "Username: " . $_SESSION['user'];
+    $userName = $_SESSION['user'];
 } else {
-    echo "Username: Guest";
+    echo "Username: $userName";
 }
 
 if(isset($_SESSION['logged_in'])) {
@@ -149,6 +150,7 @@ if(isset($_SESSION['logged_in'])) {
     else{
         $location = $_GET['location'];
         echo "<script>load('" . $location . "')</script>";
+        echo "<script>displayUsername('" . $userName ."')</script>";
     }
     if (isset($_SESSION["logged_in"])){
         echo "<script>changeLogButton()</script>";

@@ -37,6 +37,7 @@
             
             if (isset($_SESSION['user'])) {
                 echo "Username: " . $_SESSION['user'];
+                $name = $_SESSION['user'];
             } else {
                 echo "Username: Guest";
             }
