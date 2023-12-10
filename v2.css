@@ -246,3 +246,25 @@ main > div {
 #ratingMenu {
     justify-self: left;
 }
+.userReview{
+    padding: 10px;
+    border: 1px solid black;
+    min-height: 90px;
+    border-radius: 10px;
+    display: flex;
+    margin: 20px 20px 20px 20px;
+}
+.reviewMessage{
+    border: 1px solid red;
+    word-wrap: break-word;
+    padding: 1px;
+    overflow: hidden;
+}
+.userReview, .userReview *{
+    align-items: center;
+}
+.userReview p {
+    min-width: 70px;
+    text-align: center;
+    border: 1px solid red;
+}

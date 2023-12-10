@@ -112,6 +112,15 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
                 <button id="reviewSubmit" type="submit">Submit</button>
             </form>
         </div>
+        <div class="userReview">
+            <div>
+                <p></p>
+                <p></p>
+            </div>
+            <div class="reviewMessage"><p></p></div>
+        </div>
+        </div>
+        
                 
     </main>
     <footer>
