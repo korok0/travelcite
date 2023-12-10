@@ -1,19 +1,35 @@
 <?php
 session_start();
+
 $servername = "localhost";
 $dbUsername = "root"; // Your database username
-$dbPassword = ""; // Your database password if there's none
-$dbName = "travelcite_reviews"; // Your database name
-$tableName = $_GET['location'];
+$dbPassword = ""; // Your database password
+$dbName = "travelcite_reviews"; // Your main database name
+
 // Create connection
 $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbName);
-$tableName = 'france';
 
+// Check for connection errors
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+// Validate and fetch data
+$location = isset($_GET['location']) ? $conn->real_escape_string($_GET['location']) : exit('Location is required');
 $accName = $conn->real_escape_string($_SESSION["username"]);
-$rating = $conn->real_escape_string($_GET["rating"]);
-$review = $conn->real_escape_string($_GET["review"]); 
+$rating = intval($_POST["rating"]); // Use $_POST to get the rating and review from the form
+$review = $conn->real_escape_string($_POST["review"]);
 
-$sql = "INSERT INTO $tableName (username, rating, review) VALUES ('$accName', $rating, '$review')";
-$res = mysqli_query($conn, $sql);
-header("Location: location.php?location=$tableName")
+// Determine the location-specific table based on $_GET['location']
+$locationTable = "{$location}_reviews"; // This assumes you have tables like "dc_reviews", "france_reviews", etc.
+
+// Insert into the location-specific table
+$sql = "INSERT INTO $locationTable (username, rating, review) VALUES ('$accName', $rating, '$review')";
+if ($conn->query($sql) === TRUE) {
+    echo "Review submitted successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+// Redirect back to the location page
+header("Location: location.php?location=" . urlencode($location));
 ?>

@@ -1,9 +1,12 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-// logout user if they head to sign in page while logged in
+
+// Start or resume the session
 session_start();
-$_SESSION = [];
+
+// ... (your existing code)
+
 // Database connection settings
 $servername = "localhost";
 $dbUsername = "root"; // Your database username
@@ -17,45 +20,57 @@ $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbName);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+// Check if the user is already logged in, if yes, redirect to home.php
+if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === "1") {
+    header("Location: home.php");
+    exit();
+}
 
 // Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $conn->real_escape_string($_POST['user']);
-    $password = $_POST['pass']; // The password user entered in the form
+    $username = $_POST['user'];
+    $password = $_POST['pass'];
 
-    // SQL to fetch user with the username
-    $sql = "SELECT * FROM account_info WHERE Username = ?";
-    $stmt = $conn->prepare($sql);
-    
-    if ($stmt) {
-        $stmt->bind_param("s", $username);
-        $stmt->execute();
-        $result = $stmt->get_result();
+    // ... (existing code for database connection)
+
+    // Prepare a statement for user validation
+    $stmt = $conn->prepare("SELECT Password FROM account_info WHERE Username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
         
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            // Verify the password (using password_verify)
-            if (password_verify($password, $row['Password'])) {
-                // Passwords match! Log the user in and redirect to home.php
-                $_SESSION['user_id'] = $row['account_ID']; // or any other user info you want to store in the session
-                $_SESSION['username'] = $username;
-                
-                // tell session that user is logged in. random value for now. what matters is setting it in the array
-                $_SESSION['logged_in'] = "1";
-                header("Location: home.php");
+        // Verify the password
+        if (password_verify($password, $row['Password'])) {
+            // User is authenticated successfully
+            $_SESSION['user'] = $username;
+            $_SESSION['logged_in'] = "1";
+
+            // Redirect based on the last visited page
+            if (isset($_SESSION['last_page'])) {
+                $lastPage = $_SESSION['last_page'];
+                unset($_SESSION['last_page']);
+                header("Location: $lastPage");
                 exit();
             } else {
-                echo "Invalid password!";
+                header("Location: home.php");
+                exit();
             }
         } else {
-            echo "No user found with that username!";
+            // Handle incorrect password
         }
-        $stmt->close();
     } else {
-        echo "Error preparing statement: " . $conn->error;
+        // Handle user not found
     }
+
+    $stmt->close();
     $conn->close();
 }
+
+// Store the current page in the session
+$_SESSION['last_page'] = $_SERVER['HTTP_REFERER'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -33,10 +33,19 @@
         <div class="multi imge border"> 
         <?php
             $name = "Guest";
-            // if username is set
             
-            if (isset($_SESSION["username"])){
-                $name = $_SESSION["username"];
+            
+            if (isset($_SESSION['user'])) {
+                echo "Username: " . $_SESSION['user'];
+            } else {
+                echo "Username: Guest";
+            }
+            
+            // Check if the 'logged_in' session variable is set before accessing it
+            if (isset($_SESSION['logged_in'])) {
+                echo "Logged In: " . $_SESSION['logged_in'];
+            } else {
+                echo "Logged In: No";
             }
             echo "<p class=" . "choice" . ">Choose your next stop, $name!<P>";
             ?>

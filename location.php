@@ -1,3 +1,49 @@
+<?php
+session_start(); // Start the session
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Database connection settings
+$servername = "localhost";
+$dbUsername = "root"; // Your database username
+$dbPassword = ""; // Your database password if there's none
+$dbName = "travelcite_user_account"; // Your database name
+
+// Connect to your database
+$conn = new mysqli($servername, $dbUsername, $dbPassword, $dbName);
+
+// Check for connection errors
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Get data from the form
+$location = $_GET['location']; // Assuming you have a location name
+$location = preg_replace("/[^a-zA-Z0-9_]+/", "", $location); // Sanitize to allow only alphanumeric and underscore
+$tableName = $location . "_Reviews"; // e.g., Paris_Reviews
+
+$sql = "CREATE TABLE IF NOT EXISTS $tableName (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    rating INT NOT NULL,
+    review TEXT NOT NULL
+)";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Table $tableName created successfully";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+
+// Validate $location
+if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
+    echo "Invalid location name!";
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,10 +71,24 @@
             <p class="location">Example</p>
             
         </div>
-        <div class="info border">
-            <div class="rating"><h2>Rating </h2><h3>?/10</h3>
-                <p></p>
-            </div>
+        <div class="rating">
+    <h2>Rating </h2>
+    <select id="ratingMenu" name="rating" required>
+        <option disabled selected value="">&star;</option>
+        <option value="10">10&starf;</option>
+        <option value="9">9&starf;</option>
+        <option value="8">8&starf;</option>
+        <option value="7">7&starf;</option>
+        <option value="6">6&starf;</option>
+        <option value="5">5&starf;</option>
+        <option value="4">4&starf;</option>
+        <option value="3">3&starf;</option>
+        <option value="2">2&starf;</option>
+        <option value="1">1&starf;</option>
+    </select>
+    <h3>/10</h3>
+    <p></p>
+</div>
             <div class="description"><h2>Description</h2>
                 <p></p>
             </div>
@@ -46,16 +106,8 @@
             <div><h2>Reviews</h2></div>
             <div><p></p></div>
             <div>
-            <form id="reviewForm" action="submitReview.php" method="get">
+            <form id="reviewForm" action="submitReview.php?location=<?php echo urlencode($location); ?>" method="post">
                 <textarea type="text" id="reviewBox" placeholder="Leave a review!" name="review"></textarea>
-                <select id="ratingMenu" name="rating" required>
-                    <option disabled selected value="">&star;</option>
-                    <option value="5">5&starf;</option>
-                    <option value="4">4&starf;</option>
-                    <option value="3">3&starf;</option>
-                    <option value="2">2&starf;</option>
-                    <option value="1">1&starf;</option>
-                </select>
                 <button id="reviewSubmit" type="submit">Submit</button>
             </form>
         </div>
@@ -67,6 +119,18 @@
         </div>
     </footer>
     <?php 
+
+if(isset($_SESSION['user'])) {
+    echo "Username: " . $_SESSION['user'];
+} else {
+    echo "Username: Guest";
+}
+
+if(isset($_SESSION['logged_in'])) {
+    echo "Logged In: " . $_SESSION['logged_in'];
+} else {
+    echo "Logged In: No";
+}
     if(!isset($_GET['location']) or $_GET['location'] == NULL){
         /* 
         if someone tries to do site.php? or site.php?location=
@@ -78,7 +142,7 @@
         */
         header("Location: signin.php");
 
-        // prevent any more of the script to run
+        // Prevent any more of the script to run
         exit();
     }
     else{
@@ -87,18 +151,23 @@
     }
     ?>
     <?php
-            // resume the session when switching pages
-            session_start();
-            // if user is logged in 
-            if (isset($_SESSION["logged_in"])){
-                // change sign in button to log out!
-                echo "<script>changeLogButton()</script>";
-            }
-            else {
-                // if user is not logged in, lock ratings and review buttons
-                echo "<script>lockReview()</script>";
-            }
-            ?>
+        if(!isset($_GET['location']) or $_GET['location'] == NULL){
+            header("Location: signin.php");
+            exit();
+        }
+        else{
+            $location = $_GET['location'];
+            echo "<script>load('" . $location . "')</script>";
+        }
+
+        // Check if user is logged in 
+        if (isset($_SESSION["logged_in"])){
+            echo "<script>changeLogButton()</script>";
+        }
+        else {
+            echo "<script>lockReview()</script>";
+        }
+    ?>
     
 </body>
 
