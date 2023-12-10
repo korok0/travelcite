@@ -24,16 +24,15 @@ $location = preg_replace("/[^a-zA-Z0-9_]+/", "", $location); // Sanitize to allo
 $tableName = $location . "_Reviews"; // e.g., Paris_Reviews
 
 $sql = "CREATE TABLE IF NOT EXISTS $tableName (
-    id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     rating INT NOT NULL,
     review TEXT NOT NULL
 )";
 
 if ($conn->query($sql) === TRUE) {
-    //echo "Table $tableName created successfully";
+    echo "Table $tableName created successfully";
 } else {
-    //echo "Error creating table: " . $conn->error;
+    echo "Error creating table: " . $conn->error;
 }
 
 // Validate $location
@@ -74,19 +73,6 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
         <div class="border">
         <div class="rating">
             <h2>Rating </h2>
-            <select id="ratingMenu" name="rating" required>
-                <option disabled selected value="">&star;</option>
-                <option value="10">10&starf;</option>
-                <option value="9">9&starf;</option>
-                <option value="8">8&starf;</option>
-                <option value="7">7&starf;</option>
-                <option value="6">6&starf;</option>
-                <option value="5">5&starf;</option>
-                <option value="4">4&starf;</option>
-                <option value="3">3&starf;</option>
-                <option value="2">2&starf;</option>
-                <option value="1">1&starf;</option>
-            </select>
             <h3>/10</h3>
             <p></p>
         </div>
@@ -110,6 +96,19 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
             <div>
             <form id="reviewForm" action="submitReview.php?location=<?php echo urlencode($location); ?>" method="post">
                 <textarea type="text" id="reviewBox" placeholder="Leave a review!" name="review"></textarea>
+                <select for="reviewForm" id="ratingMenu" name="rating" required>
+                <option disabled selected value="">&star;</option>
+                <option value="10">10&starf;</option>
+                <option value="9">9&starf;</option>
+                <option value="8">8&starf;</option>
+                <option value="7">7&starf;</option>
+                <option value="6">6&starf;</option>
+                <option value="5">5&starf;</option>
+                <option value="4">4&starf;</option>
+                <option value="3">3&starf;</option>
+                <option value="2">2&starf;</option>
+                <option value="1">1&starf;</option>
+            </select>
                 <button id="reviewSubmit" type="submit">Submit</button>
             </form>
         </div>
@@ -129,9 +128,9 @@ if(isset($_SESSION['user'])) {
 }
 
 if(isset($_SESSION['logged_in'])) {
-    echo "Logged In: " . $_SESSION['logged_in'];
+    // echo "Logged In: " . $_SESSION['logged_in'];
 } else {
-    echo "Logged In: No";
+    // echo "Logged In: No";
 }
     if(!isset($_GET['location']) or $_GET['location'] == NULL){
         /* 
@@ -151,25 +150,14 @@ if(isset($_SESSION['logged_in'])) {
         $location = $_GET['location'];
         echo "<script>load('" . $location . "')</script>";
     }
+    if (isset($_SESSION["logged_in"])){
+        echo "<script>changeLogButton()</script>";
+    }
+    else {
+        echo "<script>lockReview()</script>";
+    }
     ?>
-    <?php
-        if(!isset($_GET['location']) or $_GET['location'] == NULL){
-            header("Location: signin.php");
-            exit();
-        }
-        else{
-            $location = $_GET['location'];
-            echo "<script>load('" . $location . "')</script>";
-        }
-
-        // Check if user is logged in 
-        if (isset($_SESSION["logged_in"])){
-            echo "<script>changeLogButton()</script>";
-        }
-        else {
-            echo "<script>lockReview()</script>";
-        }
-    ?>
+   
     
 </body>
 

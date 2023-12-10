@@ -4,7 +4,7 @@ session_start();
 $servername = "localhost";
 $dbUsername = "root"; // Your database username
 $dbPassword = ""; // Your database password
-$dbName = "travelcite_reviews"; // Your main database name
+$dbName = "travelcite_user_account"; // Your main database name
 
 // Create connection
 $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbName);
@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 }
 // Validate and fetch data
 $location = isset($_GET['location']) ? $conn->real_escape_string($_GET['location']) : exit('Location is required');
-$accName = $conn->real_escape_string($_SESSION["username"]);
+$accName = $conn->real_escape_string($_SESSION["user"]);
 $rating = intval($_POST["rating"]); // Use $_POST to get the rating and review from the form
 $review = $conn->real_escape_string($_POST["review"]);
 
