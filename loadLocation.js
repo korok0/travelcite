@@ -26,12 +26,16 @@ function load(name){
     // Load the "Things To Do section"
     for(const activity of location.activites){
         const activityElement = document.createElement("div")
+        const a  = document.createElement("a")
         const img = document.createElement("img")
         const p = document.createElement("p")
         img.src = activity.image
         p.textContent = activity.description
         activityElement.className = "activity"
-        activityElement.append(img)
+        a.href = activity.link
+        a.target = "_blank"
+        a.append(img)
+        activityElement.append(a)
         activityElement.append(p)
         activityCol.append(activityElement)
     }

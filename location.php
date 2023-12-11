@@ -52,7 +52,7 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
     <script src="loadLocation.js"></script>
     <script src="locationData.json"></script>
     <script src="buttons.js"></script>
-    <script src="sourceData.json"></script>
+    
 </head>
 
 <body>
@@ -82,7 +82,7 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
         
         <div class="activities border">
             
-                <h2>Things To Do</h2>
+                <h2>Places to Visit</h2>
             <div class="col">
                 <!--Script loads this section-->
             </div>
@@ -115,7 +115,7 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
     <footer>
         <div class="border" id="about">
             <div>
-                <h3>Main References</h3>
+                <h3>References</h3>
                 <a href="https://www.w3schools.com/html/" target="_blank">HTML</a>
                 <a href="https://www.w3schools.com/js/" target="_blank">PHP</a>
                 <a href="https://www.w3schools.com/html/" target="_blank">JS</a>
