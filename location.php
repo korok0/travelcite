@@ -22,6 +22,25 @@ $location = $_GET['location']; // Assuming you have a location name
 $location = preg_replace("/[^a-zA-Z0-9_]+/", "", $location); // Sanitize to allow only alphanumeric and underscore
 $tableName = $location . "_Reviews"; // e.g., Paris_Reviews
 
+// make sure that ?location=(value) is a real location
+$sql = "SELECT * FROM locations WHERE location = '$location'";
+$res = mysqli_query($conn, $sql);
+$locationExists = FALSE;
+if($res){
+    while ($array = mysqli_fetch_array($res)){
+        // if location exists then set bool var to true
+        if ($array['location'] == $location){
+            $locationExists = TRUE;
+        }
+        
+    }
+}
+// if location does not exist, then redirect to home and cancel creation of table
+if (!$locationExists){
+    header("Location: home.php");
+    exit();
+}
+
 $sql = "CREATE TABLE IF NOT EXISTS $tableName (
     username VARCHAR(255) NOT NULL,
     rating INT NOT NULL,
