@@ -16,6 +16,7 @@ function load(name){
     const activityCol = document.querySelector(".col")
     const imge = document.querySelector(".imge")
     const description = document.querySelector(".description p")
+    const reviewForm = document.getElementById("reviewForm").setAttribute("action", `submitReview.php?location=${name}`)
     description.textContent = location.description
     activityCol.innerHTML = ""
     imge.style.backgroundImage = "none"

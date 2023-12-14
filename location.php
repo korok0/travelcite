@@ -1,64 +1,3 @@
-<?php
-session_start(); // Start the session
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-// Database connection settings
-$servername = "localhost";
-$dbUsername = "root"; // Your database username
-$dbPassword = ""; // Your database password if there's none
-$dbName = "travelcite_user_account"; // Your database name
-
-// Connect to your database
-$conn = new mysqli($servername, $dbUsername, $dbPassword, $dbName);
-
-// Check for connection errors
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Get data from the form
-$location = $_GET['location']; // Assuming you have a location name
-$location = preg_replace("/[^a-zA-Z0-9_]+/", "", $location); // Sanitize to allow only alphanumeric and underscore
-$tableName = $location . "_Reviews"; // e.g., Paris_Reviews
-
-// make sure that ?location=(value) is a real location
-$sql = "SELECT * FROM locations WHERE location = '$location'";
-$res = mysqli_query($conn, $sql);
-$locationExists = FALSE;
-if($res){
-    while ($array = mysqli_fetch_array($res)){
-        // if location exists then set bool var to true
-        if ($array['location'] == $location){
-            $locationExists = TRUE;
-        }
-        
-    }
-}
-// if location does not exist, then redirect to home and cancel creation of table
-if (!$locationExists){
-    header("Location: home.php");
-    exit();
-}
-
-$sql = "CREATE TABLE IF NOT EXISTS $tableName (
-    username VARCHAR(255) NOT NULL,
-    rating INT NOT NULL,
-    review TEXT NOT NULL
-)";
-
-if ($conn->query($sql) === TRUE) {
-    //echo "Table $tableName created successfully";
-} else {
-    //echo "Error creating table: " . $conn->error;
-}
-
-// Validate $location
-if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
-    //echo "Invalid location name!";
-    exit;
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -111,7 +50,7 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
             <div><h2>Reviews</h2></div>
             <div><p></p></div>
             <div>
-            <form id="reviewForm" action="submitReview.php?location=<?php echo urlencode($location); ?>" method="post">
+            <form id="reviewForm" method="post">
                 <textarea type="text" id="reviewBox" placeholder="Leave a review!" name="review"></textarea>
                 <select for="reviewForm" id="ratingMenu" name="rating" required>
                 <option disabled selected value="">&star;</option>
@@ -150,6 +89,20 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
         </div>
     </footer>
     <?php 
+    session_start();
+    $servername = "localhost";
+    $dbUsername = "root"; 
+    $dbPassword = "";
+    $dbName = "travelcite_user_account";
+
+    // Create connection
+    $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbName);
+
+    // Check for connection errors
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } 
+    // set default username
     $userName = "Guest";
     if(isset($_SESSION['user'])) {
         $userName = $_SESSION['user'];
@@ -169,57 +122,86 @@ if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
         /* 
         Redirect user to main page. *Signin page for now
         */
-        header("Location: signin.php");
+    header("Location: home.php");
 
         // Prevent any more of the script to run
-        exit();
-        }
-        else{
-            $location = $_GET['location'];
-            echo "<script>load('" . $location . "')</script>";
-            echo "<script>loadSources('" . $location . "')</script>";
-            echo "<script>displayUsername('" . $userName ."')</script>";
-        }
-        if (isset($_SESSION["logged_in"])){
-            echo "<script>changeLogButton()</script>";
-        }
-        else {
-            echo "<script>lockReview()</script>";
-        }?>
-    
-    <?php
-    $servername = "localhost";
-    $dbUsername = "root"; 
-    $dbPassword = "";
-    $dbName = "travelcite_user_account";
-
-    // Create connection
-    $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbName);
-
-    // Check for connection errors
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    } 
-    if(isset($_GET["location"])){
-        $sql = "SELECT * from {$_GET['location']}_reviews";
-        $res = mysqli_query($conn, $sql);
-        if($res){
-            // add up ratings and number of ratings to perform calculation of average
-            $ratingTotal = 0;
-            $count = 0;
-            while($array = mysqli_fetch_array($res)){
-                $username = $array["username"];
-                $rating = $array["rating"];
-                $review = $conn->real_escape_string($array["review"]);
-                echo "<script>loadReviews('$username', $rating,'$review')</script>";
-                $count+=1;
-                $ratingTotal+=$rating;
-            }
-            // call js function to perform average calculation
-            echo "<script>displayAverageRating($ratingTotal, $count)</script>";
-        }
-        
+    exit();
     }
+    else{
+        // ignore case sensitivity
+        $location = strtolower($_GET['location']);
+        echo "<script>load('" . $location . "')</script>";
+        echo "<script>loadSources('" . $location . "')</script>";
+        echo "<script>displayUsername('" . $userName ."')</script>";
+    }
+    if (isset($_SESSION["logged_in"])){
+        echo "<script>changeLogButton()</script>";
+    }
+    else {
+        echo "<script>lockReview()</script>";
+    }
+ 
+    // location might be in correct format but false location
+    // make sure that ?location=(value) is a real location
+    $sql = "SELECT location FROM locations WHERE location = '$location';";
+    $res = mysqli_query($conn, $sql);
+    $locationExists = FALSE;
+    if($res){
+        while ($array = mysqli_fetch_array($res)){
+            // if location exists then set bool var to true
+            if ($array['location'] == $location){
+                $locationExists = TRUE;
+            }
+                
+        }
+    }
+    // if location does not exist, then redirect to home and cancel creation of table
+    if (!$locationExists){
+        header("Location: home.php");
+        echo $location;
+        exit();
+    }
+    // create table if doesnt exist
+    $location = preg_replace("/[^a-zA-Z0-9_]+/", "", $location); // Sanitize to allow only alphanumeric and underscore
+    $tableName = $location . "_reviews"; // e.g., Paris_Reviews
+    $sql = "CREATE TABLE IF NOT EXISTS $tableName (
+        username VARCHAR(255) NOT NULL,
+        rating INT NOT NULL,
+        review TEXT NOT NULL
+    )";
+
+    if ($conn->query($sql) === TRUE) {
+        //echo "Table $tableName created successfully";
+    } else {
+        //echo "Error creating table: " . $conn->error;
+    }
+
+    // Validate $location
+    if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
+        //echo "Invalid location name!";
+        exit;
+    }
+        
+    // query to select the reviews
+    $sql = "SELECT * from {$_GET['location']}_reviews";
+    $res = mysqli_query($conn, $sql);
+    if($res){
+        // add up ratings and number of ratings to perform calculation of average
+        $ratingTotal = 0;
+        $count = 0;
+        while($array = mysqli_fetch_array($res)){
+            $username = $array["username"];
+            $rating = $array["rating"];
+            $review = $conn->real_escape_string($array["review"]);
+            echo "<script>loadReviews('$username', $rating,'$review')</script>";
+            $count+=1;
+            $ratingTotal+=$rating;
+        }
+            // call js function to perform average calculation
+        echo "<script>displayAverageRating($ratingTotal, $count)</script>";
+    }
+        
+    
     $conn->close();
     ?>
     
