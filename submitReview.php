@@ -2,9 +2,9 @@
 session_start();
 
 $servername = "localhost";
-$dbUsername = "root"; // Your database username
-$dbPassword = ""; // Your database password
-$dbName = "travelcite_user_account"; // Your main database name
+$dbUsername = "root"; // db username
+$dbPassword = ""; // db password
+$dbName = "travelcite_user_account"; // db name
 
 // Create connection
 $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbName);

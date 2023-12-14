@@ -5,8 +5,6 @@ ini_set('display_errors', 1);
 // Start or resume the session
 session_start();
 
-// ... (your existing code)
-
 // Database connection settings
 $servername = "localhost";
 $dbUsername = "root"; // Your database username
@@ -30,8 +28,6 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === "1") {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['user'];
     $password = $_POST['pass'];
-
-    // ... (existing code for database connection)
 
     // Prepare a statement for user validation
     $stmt = $conn->prepare("SELECT Password FROM account_info WHERE Username = ?");

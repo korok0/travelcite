@@ -108,18 +108,13 @@
         $userName = $_SESSION['user'];
     }
 
-    if(isset($_SESSION['logged_in'])) {
-        // echo "Logged In: " . $_SESSION['logged_in'];
-    } else {
-        // echo "Logged In: No";
-    }
     if(!isset($_GET['location']) or $_GET['location'] == NULL or !validateLocation($_GET['location'], $conn)){
         /* 
-        check if location is set, is null, or valid
+        check if location is  not set, is null, or not valid
         */
     header("Location: home.php");
 
-        // Prevent any more of the script to run
+    // Prevent any more of the script to run
     exit();
     }
     else{
@@ -144,16 +139,10 @@
         rating INT NOT NULL,
         review TEXT NOT NULL
     )";
-
-    if ($conn->query($sql) === TRUE) {
-        //echo "Table $tableName created successfully";
-    } else {
-        //echo "Error creating table: " . $conn->error;
-    }
+    mysqli_query($conn, $sql);
 
     // Validate $location name
     if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
-        //echo "Invalid location name!";
         exit;
     }
         
@@ -175,7 +164,6 @@
             // call js function to perform average calculation
         echo "<script>displayAverageRating($ratingTotal, $count)</script>";
     }
-        
     
     $conn->close();
 
@@ -191,8 +179,7 @@
                 // if location exists then set bool var to true
                 if ($array['location'] == $location){
                     $locationExists = TRUE;
-                }
-                    
+                }  
             }
         }
         return $locationExists;
