@@ -113,14 +113,9 @@
     } else {
         // echo "Logged In: No";
     }
-    if(!isset($_GET['location']) or $_GET['location'] == NULL){
+    if(!isset($_GET['location']) or $_GET['location'] == NULL or !validateLocation($_GET['location'], $conn)){
         /* 
-        if someone tries to do site.php? or site.php?location=
-        without specifying location then redirect them back to main page
-        */
-
-        /* 
-        Redirect user to main page. *Signin page for now
+        check if location is set, is null, or valid
         */
     header("Location: home.php");
 
@@ -140,28 +135,8 @@
     else {
         echo "<script>lockReview()</script>";
     }
- 
-    // location might be in correct format but false location
-    // make sure that ?location=(value) is a real location
-    $sql = "SELECT location FROM locations WHERE location = '$location';";
-    $res = mysqli_query($conn, $sql);
-    $locationExists = FALSE;
-    if($res){
-        while ($array = mysqli_fetch_array($res)){
-            // if location exists then set bool var to true
-            if ($array['location'] == $location){
-                $locationExists = TRUE;
-            }
-                
-        }
-    }
-    // if location does not exist, then redirect to home and cancel creation of table
-    if (!$locationExists){
-        header("Location: home.php");
-        echo $location;
-        exit();
-    }
-    // create table if doesnt exist
+
+    // create table if location doesnt exist
     $location = preg_replace("/[^a-zA-Z0-9_]+/", "", $location); // Sanitize to allow only alphanumeric and underscore
     $tableName = $location . "_reviews"; // e.g., Paris_Reviews
     $sql = "CREATE TABLE IF NOT EXISTS $tableName (
@@ -176,7 +151,7 @@
         //echo "Error creating table: " . $conn->error;
     }
 
-    // Validate $location
+    // Validate $location name
     if (!preg_match("/^[a-zA-Z0-9_]+$/", $location)) {
         //echo "Invalid location name!";
         exit;
@@ -203,6 +178,25 @@
         
     
     $conn->close();
+
+    // check if location exists
+    function validateLocation($location, $conn){
+        // location might be in correct format but false location
+        // make sure that ?location=(value) is a real location
+        $sql = "SELECT location FROM locations WHERE location = '$location';";
+        $res = mysqli_query($conn, $sql);
+        $locationExists = FALSE;
+        if($res){
+            while ($array = mysqli_fetch_array($res)){
+                // if location exists then set bool var to true
+                if ($array['location'] == $location){
+                    $locationExists = TRUE;
+                }
+                    
+            }
+        }
+        return $locationExists;
+    }
     ?>
     
 </body>
